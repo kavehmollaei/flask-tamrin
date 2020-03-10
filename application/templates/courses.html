@@ -1,4 +1,4 @@
-    {% extends "layout.html" %}
+{% extends "layout.html" %}
     
     {% block content %}
     <h1>Course Offerings</h1>
@@ -32,7 +32,14 @@
                 <td>{{ data['credits'] }}</td>
                 <td>{{ data['term'] }}</td>
                 <td>
+                    <form action="{{url_for('enrollment')}}" method='POST'>
+
+                        <input type='hidden' name='courseID' value='{{data["courseID"] }}'> 
+                        <input type='hidden' name='title' value='{{data["title"] }}'>
+                        <input type='hidden' name='term' value='{{data["term"] }}'>    
+
                     <button>Enroll</button>
+                </form>
                 </td>
             </tr>
             {% endfor %}
